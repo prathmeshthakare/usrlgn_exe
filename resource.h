@@ -7,17 +7,26 @@
 #define IDS_ABOUTBOX                    101
 #define IDD_USRLGN_EXE_DIALOG           102
 #define IDR_MAINFRAME                   128
-#define IDD_DIALOG1                     130
 #define IDD_DIALOG_SIGNUP               130
 #define IDC_EDIT_USERNAME               1000
 #define IDC_EDIT2                       1001
 #define IDC_EDIT_PASSWORD               1001
 #define IDC_BUTTON_LOGIN                1002
 #define IDC_BUTTON_SIGNUP               1003
-#define IDC_EDIT1                       1004
+#define IDC_EDIT_FIRSTNAME              1004
 #define IDC_EDIT3                       1005
 #define IDC_EDIT4                       1006
 #define IDC_BUTTON_REGISTER             1007
+#define IDC_COMBO1                      1008
+#define IDC_EDIT5                       1009
+#define IDC_RADIO_FEMALE                1011
+#define IDC_RADIO_OTHER                 1012
+#define IDC_EDIT6                       1013
+#define IDC_EDIT7                       1014
+#define IDC_BUTTON_OTP                  1015
+#define IDC_BUTTON_CANCLE               1016
+#define IDC_RADIO4                      1017
+#define IDC_RADIOMALE                   1017
 
 // Next default values for new objects
 // 
@@ -25,7 +34,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        132
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1008
+#define _APS_NEXT_CONTROL_VALUE         1018
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
