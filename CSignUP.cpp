@@ -1,4 +1,4 @@
-// CSignUP.cpp : implementation file
+﻿// CSignUP.cpp : implementation file
 //
 
 #include "pch.h"
@@ -42,6 +42,7 @@ void CSignUP::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CSignUP, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_REGISTER, &CSignUP::OnBnClickedButtonRegister)
 	ON_BN_CLICKED(IDC_BUTTON_CANCLE, &CSignUP::OnBnClickedButtonCancle)
+	ON_BN_CLICKED(IDC_BUTTON_OTP, &CSignUP::OnBnClickedButtonOtp)
 END_MESSAGE_MAP()
 
 
@@ -182,3 +183,48 @@ BOOL CSignUP::IsNumeric(const CString& str)
 
 
 
+
+
+void CSignUP::OnBnClickedButtonOtp()
+{
+	// TODO: Add your control notification handler code here
+	CString btnText;
+	GetDlgItem(IDC_BUTTON_OTP)->GetWindowText(btnText);
+
+	if (btnText == _T("Send OTP"))
+	{
+		// 1. Generate OTP
+		int otp = rand() % 9000 + 1000;  // 4-digit random OTP
+		csGenerateOTP.Format(_T("%d"), otp);
+
+		// 2. Simulate sending (you can later replace this with SMS API)
+		AfxMessageBox(_T("OTP Sent: ") + csGenerateOTP);
+
+		// 3. Enable OTP input field
+		GetDlgItem(IDC_EDIT7)->EnableWindow(TRUE);
+
+		// 4. Change button text to "Verify OTP"
+		GetDlgItem(IDC_BUTTON_OTP)->SetWindowText(_T("Verify OTP"));
+	}
+	else if (btnText == _T("Verify OTP"))
+	{
+		// 5. Get user input from edit box
+		CString userInput;
+		GetDlgItem(IDC_EDIT7)->GetWindowText(userInput);
+
+		// 6. Compare input OTP with generated OTP
+		if (userInput == csGenerateOTP)
+		{
+			AfxMessageBox(_T("✅ OTP Verified Successfully!"));
+		}
+		else
+		{
+			AfxMessageBox(_T("❌ Invalid OTP. Try again."));
+		}
+
+		// 7. Reset button and input field
+		GetDlgItem(IDC_BUTTON_OTP)->SetWindowText(_T("Send OTP"));
+		GetDlgItem(IDC_EDIT7)->SetWindowText(_T(""));
+		GetDlgItem(IDC_EDIT7)->EnableWindow(FALSE);
+	}
+}

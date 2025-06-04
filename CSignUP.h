@@ -37,6 +37,8 @@ public:
 	CButton m_male;
 	CButton m_female;
 	CButton m_other;
+
+	CString csGenerateOTP;
 	virtual BOOL OnInitDialog();
 
 	// Validation functions
@@ -48,4 +50,5 @@ public:
 	BOOL ValidateMobno(const CString& mobno);
 	BOOL IsNumeric(const CString& str);
 
+	afx_msg void OnBnClickedButtonOtp();
 };
