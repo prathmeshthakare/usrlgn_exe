@@ -32,10 +32,10 @@ void CSignUP::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EDIT5, m_username);
 	DDX_Control(pDX, IDC_EDIT6, m_pass);
 	DDX_Control(pDX, IDC_EDIT7, m_otp);
-	
-	DDX_Control(pDX, IDC_RADIOMALE, m_male);
-	DDX_Control(pDX, IDC_RADIO_FEMALE, m_female);
-	DDX_Control(pDX, IDC_RADIO_OTHER, m_other);
+
+	DDX_Control(pDX, IDC_RADIO1, m_male);
+	DDX_Control(pDX, IDC_RADIO2, m_female);
+	DDX_Control(pDX, IDC_RADIO3, m_other);
 }
 
 
@@ -43,6 +43,7 @@ BEGIN_MESSAGE_MAP(CSignUP, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_REGISTER, &CSignUP::OnBnClickedButtonRegister)
 	ON_BN_CLICKED(IDC_BUTTON_CANCLE, &CSignUP::OnBnClickedButtonCancle)
 	ON_BN_CLICKED(IDC_BUTTON_OTP, &CSignUP::OnBnClickedButtonOtp)
+	ON_BN_CLICKED(IDC_RADIO_OTHER, &CSignUP::OnBnClickedRadioOther)
 END_MESSAGE_MAP()
 
 
@@ -227,4 +228,10 @@ void CSignUP::OnBnClickedButtonOtp()
 		GetDlgItem(IDC_EDIT7)->SetWindowText(_T(""));
 		GetDlgItem(IDC_EDIT7)->EnableWindow(FALSE);
 	}
+}
+
+
+void CSignUP::OnBnClickedRadioOther()
+{
+	// TODO: Add your control notification handler code here
 }

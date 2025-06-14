@@ -51,4 +51,6 @@ public:
 	BOOL IsNumeric(const CString& str);
 
 	afx_msg void OnBnClickedButtonOtp();
+	afx_msg void OnBnClickedRadioOther();
+	
 };
