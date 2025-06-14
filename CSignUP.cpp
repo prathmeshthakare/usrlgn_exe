@@ -6,6 +6,11 @@
 #include "afxdialogex.h"
 #include "CSignUP.h"
 
+ 
+// define manual macros 
+#define MAX_LOG_SIZE (5 * 1024 * 1024) // 5 MB
+
+
 
 // CSignUP dialog
 
@@ -69,6 +74,7 @@ BOOL CSignUP::OnInitDialog()
 
 void CSignUP::OnBnClickedButtonRegister()
 {
+	
 	CString csFname, csLname, csEmail, csGender, csUsername, csPass, csMobno;
 
 	// Get values
@@ -234,4 +240,28 @@ void CSignUP::OnBnClickedButtonOtp()
 void CSignUP::OnBnClickedRadioOther()
 {
 	// TODO: Add your control notification handler code here
+}
+
+
+void CSignUP::WriteToLog(const char* message)
+{
+	const char* fileName = "D:\\usrApp\\log.txt";
+	struct stat fileStat;
+
+	// Check file size
+	if (stat(fileName, &fileStat) == 0)
+	{
+		if (fileStat.st_size > MAX_LOG_SIZE)
+		{
+			DeleteFileA(fileName);  // delete using Win32 API
+		}
+	}
+
+	// ✅ Use fopen_s (safe version of fopen)
+	FILE* fp = NULL;
+	if (fopen_s(&fp, fileName, "a") == 0 && fp != NULL)
+	{
+		fprintf(fp, "%s\n", message);
+		fclose(fp);
+	}
 }

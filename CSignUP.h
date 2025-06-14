@@ -50,6 +50,7 @@ public:
 	BOOL ValidateMobno(const CString& mobno);
 	BOOL IsNumeric(const CString& str);
 
+	void WriteToLog(const char* message);
 	afx_msg void OnBnClickedButtonOtp();
 	afx_msg void OnBnClickedRadioOther();
 	

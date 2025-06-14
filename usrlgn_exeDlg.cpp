@@ -12,6 +12,9 @@
 #define new DEBUG_NEW
 #endif
 
+
+
+
 // OBJECTS OF class
 CSignUP sgnup;
 
@@ -105,6 +108,17 @@ BOOL CusrlgnexeDlg::OnInitDialog()
 
 	// TODO: Add extra initialization here
 
+	//check mutex
+	HANDLE h = CreateMutex(NULL, FALSE, _T("MyAppMutex"));
+	if (GetLastError() == ERROR_ALREADY_EXISTS)
+	{
+		AfxMessageBox(_T("App already running!"));
+		exit(0);
+	}
+
+	sgnup.WriteToLog("********* Application Start ***********");
+	CreateDirectoryA("D:\\usrApp", NULL);
+
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
@@ -172,3 +186,5 @@ void CusrlgnexeDlg::OnBnClickedButtonSignup()
 	sgnup.DoModal();
 
 }
+
+
